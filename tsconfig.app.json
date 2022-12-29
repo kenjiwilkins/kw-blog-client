@@ -12,7 +12,4 @@
     },
     "jsx": "preserve"
   }
-  // "vueCompilerOptions": {
-  //   "experimentalDisableTemplateSupport": true
-  // }
 }

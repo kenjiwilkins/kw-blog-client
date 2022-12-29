@@ -5,6 +5,8 @@
     "dev": "vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview --port 4173",
+    "heroku-postbuild": "yarn build",
+    "serve": "serve dist",
     "test:unit": "vitest --environment jsdom",
     "test:e2e": "start-server-and-test preview http://localhost:4173/ 'cypress open --e2e'",
     "test:e2e:ci": "start-server-and-test preview http://localhost:4173/ 'cypress run --e2e'",
@@ -17,6 +19,7 @@
     "contentful": "^9.2.4",
     "contentful-rich-text-vue-renderer": "^3.0.1",
     "date-fns": "^2.29.3",
+    "serve": "^14.1.2",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   },

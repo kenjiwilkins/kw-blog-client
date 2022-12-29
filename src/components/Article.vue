@@ -105,7 +105,6 @@
       />
     </div>
   </div>
-  <!-- <h1>{{ article }}</h1> -->
 </template>
 <script setup lang="ts">
 import { onMounted } from "vue";
