@@ -18,4 +18,11 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
   },
+  ignorePatterns: [
+    "node_modules/",
+    "dist/",
+    "cypress/",
+    "postcss.config.js",
+    "tailwind.config.js",
+  ],
 };

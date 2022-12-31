@@ -5,7 +5,7 @@
 </template>
 <script setup lang="ts">
 import ContentWrapper from "@/components/ContentWrapper.vue";
-import Article from "@/components/Article.vue";
+import Article from "@/components/ArticleBody.vue";
 import { getArticle } from "@/api";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
