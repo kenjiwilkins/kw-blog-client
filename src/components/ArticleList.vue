@@ -10,7 +10,9 @@
         @click="jumpToArticle(article.sys.id)"
         class="flex"
       >
-        <div class="flex space-y-2 space-x-6 p-4 hover:bg-gray-100">
+        <div
+          class="flex space-y-2 space-x-6 p-4 hover:bg-gray-100 hover:cursor-pointer"
+        >
           <div class="flex flex-col relative pr-4 pb-6">
             <h2 class="text-xl font-light flex-shrink-0">
               {{ article.fields.title }}
@@ -66,7 +68,6 @@ function jumpToTag(id: string) {
   router.push(`/tag/${id}`);
 }
 function fetchArticles(path: string, id: string | string[]) {
-  console.log(path, id);
   if (path.match(/category/g)) {
     getCategoryArticles(typeof id === "string" ? id : "").then((entries) => {
       articles.value = entries;
