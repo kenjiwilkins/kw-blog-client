@@ -137,6 +137,7 @@
         v-if="component.nodeType === 'embedded-asset-block'"
         :src="component.data.target.fields.file.url"
         :alt="component.data.target.fields.description"
+        class="max-w-xl"
       />
     </div>
   </div>
