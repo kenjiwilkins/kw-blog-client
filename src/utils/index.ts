@@ -1,3 +1,3 @@
 import { dateFormatter, dateTimeFormatter } from "./dateFormatter";
-import { setTitle } from "./setTitle";
+import { setTitle } from "./documentHandler";
 export { dateFormatter, dateTimeFormatter, setTitle };

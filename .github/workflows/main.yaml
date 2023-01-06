@@ -15,6 +15,10 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: install # will run `yarn install` command
+      - name: Run build
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build # will run `yarn build` command
       - name: Run lint
         uses: borales/actions-yarn@v4
         with:
