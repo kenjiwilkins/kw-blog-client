@@ -6,8 +6,7 @@ import { ref, onMounted } from "vue";
 const props = defineProps<{
   articleBodyComponents: Array<any>;
 }>();
-// let articleBody = "test";
-const articleBody = ref();
+const articleBody = ref("");
 onMounted(() => {
   for (let i = 0; i < props.articleBodyComponents.length; i++) {
     if (props.articleBodyComponents[i].nodeType === "paragraph") {

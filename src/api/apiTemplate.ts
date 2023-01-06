@@ -9,6 +9,6 @@ export function apiTemplate(url: string) {
 }
 
 export const client = createClient({
-  space: "2cmxpw7zfb54",
+  space: import.meta.env.VITE_APP_CTF_SPACE_ID,
   accessToken: import.meta.env.VITE_APP_CTF_ACCESS_TOKEN,
 });

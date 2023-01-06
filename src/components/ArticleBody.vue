@@ -6,7 +6,7 @@
     </h1>
     <div class="flex py-1 space-x-2">
       <p>{{ dateFormatter(article.fields.publishedDate) }}</p>
-      <p>
+      <p v-if="article.fields.category">
         Category:
         <router-link
           :to="`/category/${article.fields.category.sys.id}`"
@@ -14,7 +14,7 @@
           >{{ article.fields.category.fields.categoryName }}</router-link
         >
       </p>
-      <p>
+      <p v-if="article.fields.tags">
         Tag:
         <router-link
           v-for="tag in article.fields.tags"
