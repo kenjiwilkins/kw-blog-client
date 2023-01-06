@@ -1,11 +1,11 @@
 <template>
   <ContentWrapper>
-    <Article :article="article" />
+    <ArticleBody :article="article" />
   </ContentWrapper>
 </template>
 <script setup lang="ts">
 import ContentWrapper from "@/components/ContentWrapper.vue";
-import Article from "@/components/Article.vue";
+import ArticleBody from "@/components/ArticleBody.vue";
 import { getArticle } from "@/api";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";

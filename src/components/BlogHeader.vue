@@ -11,13 +11,9 @@
       <hr class="my-2" />
     </div>
     <div class="px-6">
-      <ul class="mb-2">
+      <ul v-if="categories" class="mb-2">
         <p class="text-lg font-bold">Category</p>
-        <li
-          v-if="categories"
-          v-for="category in categories.items"
-          :key="category.sys.id"
-        >
+        <li v-for="category in categories.items" :key="category.sys.id">
           <router-link
             :to="`/category/${category.sys.id}`"
             class="flex justify-between hover:underline"
@@ -26,9 +22,9 @@
           </router-link>
         </li>
       </ul>
-      <ul>
+      <ul v-if="tags">
         <p class="text-lg font-bold">Tag</p>
-        <li v-if="tags" v-for="tag in tags.items" :key="tag.sys.id">
+        <li v-for="tag in tags.items" :key="tag.sys.id">
           <router-link
             :to="`/tag/${tag.sys.id}`"
             class="flex justify-between hover:underline"

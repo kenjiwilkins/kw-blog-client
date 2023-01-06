@@ -7,12 +7,12 @@
     "preview": "vite preview --port 4173",
     "heroku-postbuild": "yarn build",
     "serve": "serve dist",
-    "test:unit": "vitest --environment jsdom",
+    "test:unit": "vitest run --environment jsdom --coverage",
     "test:e2e": "start-server-and-test preview http://localhost:4173/ 'cypress open --e2e'",
     "test:e2e:ci": "start-server-and-test preview http://localhost:4173/ 'cypress run --e2e'",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -28,6 +28,8 @@
     "@types/jsdom": "^20.0.0",
     "@types/node": "^16.11.56",
     "@vitejs/plugin-vue": "^3.0.3",
+    "@vitest/coverage-c8": "^0.26.2",
+    "@vitest/coverage-istanbul": "^0.26.2",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/test-utils": "^2.0.2",
