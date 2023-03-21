@@ -24,6 +24,11 @@ const router = createRouter({
       name: "tag",
       component: () => import("@/views/TagEndView.vue"),
     },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "not-found",
+      component: () => import("@/views/pageNotFound.vue"),
+    },
   ],
 });
 
