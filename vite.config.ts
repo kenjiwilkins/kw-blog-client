@@ -9,7 +9,7 @@ import { fileURLToPath, URL } from "node:url";
 /** @type {import('vite').UserConfig} */
 const viteConfig = defineViteConfig({
   plugins: [vue()],
-  base: "/kw-blog-client/",
+  base: "/",
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
