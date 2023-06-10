@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import BlogHeader from "@/components/BlogHeader.vue";
 import NewBlogHeader from "./components/NewBlogHeader.vue";
 </script>
 
