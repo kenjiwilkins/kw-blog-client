@@ -9,8 +9,8 @@ import "./assets/main.css";
 const app = createApp(App);
 sentry.init({
   app,
-  dsn: process.env.VITE_APP_SENTRY_DSN,
-  release: process.env.RELEASE_VERSION,
+  dsn: import.meta.env.VITE_APP_SENTRY_DSN,
+  release: import.meta.env.RELEASE_VERSION,
   integrations: [
     new sentry.BrowserTracing({
       routingInstrumentation: sentry.vueRouterInstrumentation(router),
