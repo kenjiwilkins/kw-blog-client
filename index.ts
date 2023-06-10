@@ -1,6 +1,6 @@
 import * as express from "express";
 import rateLimit from "express-rate-limit";
-import logger from "morgan";
+import * as logger from "morgan";
 
 const app = express();
 app.use(express.static(__dirname + "/dist"));
