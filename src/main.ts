@@ -15,7 +15,7 @@ sentry.init({
     new sentry.BrowserTracing({
       tracePropagationTargets: [
         "localhost",
-        /^https:\/\/cdn.contentful.com\/spaces\/2cmxpw7zfb54\/environments\/master\//,
+        /^https:\/\/cdn.contentful\.com\/spaces\/2cmxpw7zfb54\/environments\/master\//,
       ],
       routingInstrumentation: sentry.vueRouterInstrumentation(router),
     }),
