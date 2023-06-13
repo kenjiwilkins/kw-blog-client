@@ -10,13 +10,15 @@ const app = createApp(App);
 sentry.init({
   app,
   dsn: import.meta.env.VITE_APP_SENTRY_DSN,
-  release: import.meta.env.RELEASE_VERSION,
+  release: process.env.RELEASE_VERSION,
   integrations: [
     new sentry.BrowserTracing({
       tracePropagationTargets: [
         "localhost",
         /^https:\/\/cdn\.contentful\.com\/spaces\/2cmxpw7zfb54\/environments\/master\//,
       ],
+    }),
+    new sentry.BrowserTracing({
       routingInstrumentation: sentry.vueRouterInstrumentation(router),
     }),
     new sentry.Replay(),

@@ -10,7 +10,6 @@ import { version } from "./package.json";
 /** @type {import('vite').UserConfig} */
 export default ({ mode }: any) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
-  console.log("TOKEN", process.env.VITE_APP_SENTRY_TOKEN);
   return defineViteConfig({
     build: {
       sourcemap: true,
