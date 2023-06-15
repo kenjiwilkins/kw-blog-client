@@ -1,19 +1,22 @@
 <template>
-  <div
-    v-if="!article"
-    v-for="n in PLACEHOLDER_COUNT"
-    :key="'articlePlaceholder-' + n"
-    role="status"
-    class="max-w-lg animate-pulse py-3"
-  >
-    <div class="h-2.5 bg-kw-gray rounded-full w-48 mb-4"></div>
-    <div class="h-2 bg-kw-gray rounded-full max-w-[360px] mb-2.5"></div>
-    <div class="h-2 bg-kw-gray rounded-full mb-2.5"></div>
-    <div class="h-2 bg-kw-gray rounded-full max-w-[330px] mb-2.5"></div>
-    <div class="h-2 bg-kw-gray rounded-full max-w-[300px] mb-2.5"></div>
-    <div class="h-2 bg-kw-gray rounded-full max-w-[360px]"></div>
-    <span class="sr-only">Loading...</span>
-  </div>
+  <transition>
+    <div v-if="!article">
+      <div
+        v-for="n in PLACEHOLDER_COUNT"
+        :key="'articlePlaceholder-' + n"
+        role="status"
+        class="max-w-lg animate-pulse py-3"
+      >
+        <div class="h-2.5 bg-kw-gray rounded-full w-48 mb-4"></div>
+        <div class="h-2 bg-kw-gray rounded-full max-w-[360px] mb-2.5"></div>
+        <div class="h-2 bg-kw-gray rounded-full mb-2.5"></div>
+        <div class="h-2 bg-kw-gray rounded-full max-w-[330px] mb-2.5"></div>
+        <div class="h-2 bg-kw-gray rounded-full max-w-[300px] mb-2.5"></div>
+        <div class="h-2 bg-kw-gray rounded-full max-w-[360px]"></div>
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </transition>
   <transition>
     <div v-if="article">
       <h1 class="text-4xl">
