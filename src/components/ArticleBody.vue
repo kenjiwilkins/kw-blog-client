@@ -2,6 +2,7 @@
   <div
     v-if="!article"
     v-for="n in PLACEHOLDER_COUNT"
+    :key="'articlePlaceholder-' + n"
     role="status"
     class="max-w-lg animate-pulse py-3"
   >
