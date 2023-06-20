@@ -5,6 +5,8 @@ import * as fs from "fs";
 import "dotenv/config";
 import { createClient } from "contentful";
 
+const HTTPS = "https:";
+
 const client = createClient({
   space: process.env.VITE_APP_CTF_SPACE_ID as string,
   accessToken: process.env.VITE_APP_CTF_ACCESS_TOKEN as string,
@@ -27,6 +29,7 @@ app.use(logger("common"));
 app.get("/article/:articleId", async (req, res) => {
   const articleId = req.params.articleId;
   const article = (await getArticle(articleId)) as any;
+  const fileUrl = article.fields.thumbnail.fields.file.url;
   fs.readFile(__dirname + "/dist/index.html", "utf8", (err, htmlData) => {
     if (err) {
       console.error("Error during file reading", err);
@@ -41,6 +44,10 @@ app.get("/article/:articleId", async (req, res) => {
     htmlData = htmlData.replace(
       '<meta property="og:type" content="website" />',
       `<meta property="og:type" content="article" />`
+    );
+    htmlData = htmlData.replace(
+      '<meta property="og:image" content="/logo.png" />',
+      `<meta property="og:image" content="${HTTPS}${fileUrl}" />`
     );
     res.send(htmlData);
   });
