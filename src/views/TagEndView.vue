@@ -1,7 +1,10 @@
 <template>
   <ContentWrapper>
     <h1 class="text-3xl pb-4">
-      Tag: <span v-if="tag">{{ tag.fields.tagName }}</span>
+      Tag:
+      <Transition
+        ><span v-if="tag">{{ tag.fields.tagName }}</span></Transition
+      >
     </h1>
     <ArticleList />
   </ContentWrapper>
@@ -33,3 +36,13 @@ onBeforeRouteUpdate((to, from, next) => {
   next();
 });
 </script>
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 2s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
