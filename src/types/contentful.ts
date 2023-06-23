@@ -13,6 +13,17 @@ export interface category {
   categoryName: string;
 }
 
+export interface thumbnail {
+  fields: {
+    title: string;
+    file: {
+      url: string;
+      fileName: string;
+      contentType: string;
+    };
+  };
+}
+
 export interface ArticleModel {
   includes: {
     Asset: {}[];

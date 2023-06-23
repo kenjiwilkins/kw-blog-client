@@ -1,7 +1,12 @@
 <template>
   <ContentWrapper>
     <h1 class="text-3xl pb-4">
-      Category: <span v-if="category">{{ category.fields.categoryName }}</span>
+      Category:
+      <Transition
+        ><span v-if="category">{{
+          category.fields.categoryName
+        }}</span></Transition
+      >
     </h1>
     <ArticleList :articles="articles" />
   </ContentWrapper>
@@ -46,3 +51,13 @@ onBeforeRouteUpdate((to, from, next) => {
   next();
 });
 </script>
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 2s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
