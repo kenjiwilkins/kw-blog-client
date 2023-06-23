@@ -1,7 +1,7 @@
 <template>
   <ul v-if="articles">
     <li
-      v-for="article in articles.items"
+      v-for="article in props.articles.items"
       :key="article.sys.id"
       class="border border-solid rounded-lg min-w-fit mb-5"
     >
@@ -49,15 +49,16 @@
   </ul>
 </template>
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
-import { getArticles, getCategoryArticles, getTagArticles } from "@/api";
+import { defineProps } from "vue";
+import { useRouter } from "vue-router";
 import { dateFormatter } from "@/utils";
 import ArticleStripBody from "./ArticleStripBody.vue";
+import type { ArticleModel } from "@/types/contentful";
 
 const router = useRouter();
-const route = useRoute();
-const articles = ref();
+const props = defineProps<{
+  articles: ArticleModel;
+}>();
 function jumpToArticle(id: string) {
   router.push(`/article/${id}`);
 }
@@ -67,26 +68,4 @@ function jumpToCategory(id: string) {
 function jumpToTag(id: string) {
   router.push(`/tag/${id}`);
 }
-function fetchArticles(path: string, id: string | string[]) {
-  if (path.match(/category/g)) {
-    getCategoryArticles(typeof id === "string" ? id : "").then((entries) => {
-      articles.value = entries;
-    });
-  } else if (path.match(/tag/g)) {
-    getTagArticles(typeof id === "string" ? id : "").then((entries) => {
-      articles.value = entries;
-    });
-  } else {
-    getArticles().then((entries) => {
-      articles.value = entries;
-    });
-  }
-}
-onMounted(() => {
-  fetchArticles(route.path, route.params.id);
-});
-onBeforeRouteUpdate((to, from, next) => {
-  fetchArticles(to.path, to.params.id);
-  next();
-});
 </script>
