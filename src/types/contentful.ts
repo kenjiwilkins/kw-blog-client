@@ -1,8 +1,15 @@
 export interface tag {
   sys: sys;
+  fields: {
+    tagName: string;
+  };
   tagName: string;
 }
 export interface category {
+  sys: sys;
+  fields: {
+    categoryName: string;
+  };
   categoryName: string;
 }
 
@@ -37,9 +44,9 @@ export interface ArticleModel {
           }[];
         }[];
       };
+      publishedDate: string;
       category: category;
-      tag: tag;
-      thumbnail: thumbnail;
+      tags: tag[];
     };
     sys: sys;
   }[];

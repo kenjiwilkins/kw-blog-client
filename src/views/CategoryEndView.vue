@@ -8,7 +8,7 @@
         }}</span></Transition
       >
     </h1>
-    <ArticleList />
+    <ArticleList :articles="articles" />
   </ContentWrapper>
 </template>
 <script setup lang="ts">
@@ -16,8 +16,9 @@ import { ref, onMounted } from "vue";
 import { onBeforeRouteUpdate, useRoute } from "vue-router";
 import ContentWrapper from "@/components/ContentWrapper.vue";
 import ArticleList from "@/components/ArticleList.vue";
-import { getCateory } from "@/api";
+import { getCateory, getCategoryArticles } from "@/api";
 const category = ref();
+const articles = ref();
 const route = useRoute();
 const fetchCategory = async (id: string) => {
   try {
@@ -30,8 +31,20 @@ const fetchCategory = async (id: string) => {
     }
   }
 };
+const fetchArticles = async (id: string) => {
+  try {
+    await getCategoryArticles(id).then((entries) => {
+      articles.value = entries;
+    });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+    }
+  }
+};
 onMounted(() => {
   fetchCategory(typeof route.params.id === "string" ? route.params.id : "");
+  fetchArticles(typeof route.params.id === "string" ? route.params.id : "");
 });
 onBeforeRouteUpdate((to, from, next) => {
   fetchCategory(typeof to.params.id === "string" ? to.params.id : "");
