@@ -77,7 +77,7 @@ import ArticleStripBody from "./ArticleStripBody.vue";
 import type { ArticleModel } from "@/types/contentful";
 
 const router = useRouter();
-const props = defineProps<{
+defineProps<{
   articles: ArticleModel;
 }>();
 function jumpToArticle(id: string) {
