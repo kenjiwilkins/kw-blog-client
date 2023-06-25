@@ -3,7 +3,7 @@
 A Vite + Vue3 webapp to serve blog content of myself
 
 - Production: http://www.kenji-wilkins.blog/
-- StoryBook: https://kenjiwilkins.github.io/kw-blog-client/
+- StoryBook(of default branch): https://kenjiwilkins.github.io/kw-blog-client/
 
 # Architecture
 
