@@ -42,7 +42,7 @@ jobs:
       - name: Build
         uses: borales/actions-yarn@v4
         with:
-          cmd: build # will run `yarn build` command
+          cmd: build-storybook # will run `yarn build` command
         env:
           VITE_APP_CTF_SPACE_ID: ${{ secrets.VITE_APP_CTF_SPACE_ID }}
           VITE_APP_CTF_ACCESS_TOKEN: ${{ secrets.VITE_APP_CTF_ACCESS_TOKEN }}
@@ -52,7 +52,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload dist repository
-          path: "./storybook-static"
+          path: "/storybook-static"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
