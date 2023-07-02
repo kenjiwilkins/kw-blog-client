@@ -17,6 +17,7 @@ onMounted(() => {
   getArticle(typeof route.params.id === "string" ? route.params.id : "")
     .then((entry) => {
       article.value = entry;
+      console.log(entry);
       typeof article.value.fields.title === "string"
         ? setTitle(article.value.fields.title)
         : console.error("Article title not found");

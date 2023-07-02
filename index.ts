@@ -1,8 +1,10 @@
 import * as express from "express";
 import rateLimit from "express-rate-limit";
 import * as logger from "morgan";
+import * as cors from "cors";
 import * as fs from "fs";
 import "dotenv/config";
+import { api } from "./routes";
 import { createClient } from "contentful";
 
 const HTTPS = "https:";
@@ -25,6 +27,8 @@ app.use(
   })
 );
 app.use(logger("common"));
+app.use(cors());
+app.use("/api", api);
 
 app.get("/article/:articleId", async (req, res) => {
   try {

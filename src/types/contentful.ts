@@ -24,6 +24,24 @@ export interface thumbnail {
   };
 }
 
+export interface Article {
+  fields: {
+    title: string;
+    articleBody: {
+      content: ArticleContent[];
+    };
+    category: category;
+    tags: tag[];
+    publishedDate: string;
+  };
+}
+
+export interface ArticleContent {
+  content: ArticleContent[];
+  value: string;
+  nodeType: string;
+}
+
 export interface ArticleModel {
   includes: {
     Asset: {}[];
