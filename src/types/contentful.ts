@@ -11,7 +11,6 @@ export interface category {
     categoryName: string;
   };
   categoryName: string;
-  sys: sys;
 }
 
 export interface thumbnail {
