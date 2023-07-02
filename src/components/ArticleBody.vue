@@ -120,6 +120,30 @@
             {{ content.value }}
           </span>
         </p>
+        <a
+          v-if="!!hasUrl(index)"
+          :href="hasUrl(index).requestUrl"
+          class="flex justify-start items-center gap-4 border-solid border rounded px-12 py-6 bg-kw-secondary-green"
+        >
+          <div>
+            <img
+              v-if="hasUrl(index).ogImage"
+              :src="hasUrl(index).ogImage[0].url"
+              :alt="hasUrl(index).ogImage[0].alt || 'OGP Image'"
+              width="200"
+              height="100"
+              class="object-cover flex-grow"
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <h3 class="text-2xl font-bold">
+              {{ hasUrl(index).ogTitle || "OGP Title" }}
+            </h3>
+            <p v-if="hasUrl(index).ogDescription" class="text-kw-gray">
+              {{ hasUrl(index).ogDescription || "OGP URL" }}
+            </p>
+          </div>
+        </a>
         <blockquote
           v-if="component.nodeType === 'blockquote'"
           class="p-4 my-4 bg-kw-gray border-l-4 border-gray-300 py-2"
@@ -162,14 +186,53 @@
   </transition>
 </template>
 <script setup lang="ts">
+import { watch, ref } from "vue";
 import { dateFormatter } from "@/utils";
+import { getOgp } from "@/api";
 const PLACEHOLDER_COUNT = 5;
-defineProps({
+const props = defineProps({
   article: {
     type: Object,
     required: true,
   },
 });
+const links = ref<
+  {
+    componentIndex: number;
+    ogp: any;
+  }[]
+>([]);
+watch(props, (newProps) => {
+  if (newProps.article) {
+    links.value = [];
+    newProps.article.fields.articleBody.content.forEach(
+      (component: any, index: number) => {
+        if (component.nodeType === "paragraph") {
+          let url = {
+            componentIndex: index,
+            ogp: {},
+          };
+          component.content.forEach(async (content: any) => {
+            if (content.nodeType === "hyperlink") {
+              url.ogp = await getOgp(content.data.uri);
+              links.value.push(url);
+            }
+          });
+        }
+      }
+    );
+  }
+});
+
+function hasUrl(index: number) {
+  const result = links.value.find((url) => {
+    return url.componentIndex === index;
+  });
+  return result?.ogp || undefined;
+}
+
+// const getOgp = (index:)
+
 function getClass(marks: any) {
   if (!marks) {
     return "";

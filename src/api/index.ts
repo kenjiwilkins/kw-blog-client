@@ -6,6 +6,7 @@ import {
   getCategoryArticles,
   getTagArticles,
 } from "./article";
+import { getOgp } from "./ogp";
 
 export {
   getArticle,
@@ -16,4 +17,5 @@ export {
   getCateory,
   getTags,
   getTag,
+  getOgp,
 };

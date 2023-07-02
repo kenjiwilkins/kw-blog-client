@@ -11,6 +11,7 @@ export interface category {
     categoryName: string;
   };
   categoryName: string;
+  sys: sys;
 }
 
 export interface thumbnail {
@@ -22,6 +23,24 @@ export interface thumbnail {
       contentType: string;
     };
   };
+}
+
+export interface Article {
+  fields: {
+    title: string;
+    articleBody: {
+      content: ArticleContent[];
+    };
+    category: category;
+    tags: tag[];
+    publishedDate: string;
+  };
+}
+
+export interface ArticleContent {
+  content: ArticleContent[];
+  value: string;
+  nodeType: string;
 }
 
 export interface ArticleModel {
